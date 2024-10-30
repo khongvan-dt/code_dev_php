@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 30, 2024 lúc 09:44 AM
+-- Thời gian đã tạo: Th10 30, 2024 lúc 09:49 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -72,20 +72,6 @@ INSERT INTO `contact` (`id`, `email`, `phone_number`, `address`, `iframe`, `open
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `display`
---
-
-CREATE TABLE `display` (
-  `id` int(11) NOT NULL,
-  `img` varchar(255) DEFAULT NULL,
-  `title2` varchar(500) DEFAULT NULL,
-  `title3` varchar(500) DEFAULT NULL,
-  `create_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Cấu trúc bảng cho bảng `feedback`
 --
 
@@ -108,41 +94,6 @@ INSERT INTO `feedback` (`id`, `User_id`, `fullname`, `email`, `phone_number`, `s
 (2, 1, 'vandt14', 'Admin132004@gmail.com', '0987654321', 'sss', 'ww', '2024-10-22 13:57:44'),
 (3, 1, 'vandt14', 'Admin132004@gmail.com', '0987654321', 'sss', 'ss', '2024-10-22 14:01:57'),
 (4, 1, 'vandt14', 'Admin132004@gmail.com', '0987654321', 'sss', 'ty', '2024-10-22 14:16:51');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `galery`
---
-
-CREATE TABLE `galery` (
-  `Galery_id` int(11) NOT NULL,
-  `product_id2` int(11) NOT NULL,
-  `img2` varchar(500) NOT NULL,
-  `create_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Đang đổ dữ liệu cho bảng `galery`
---
-
-INSERT INTO `galery` (`Galery_id`, `product_id2`, `img2`, `create_at`) VALUES
-(12, 12, 'ad-image-2.png', '2024-10-18 01:01:38'),
-(13, 13, 'ad-image-1.png', '2024-10-18 18:06:18'),
-(14, 14, 'ad-image-1.png', '2024-10-18 18:24:41');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `name_shop`
---
-
-CREATE TABLE `name_shop` (
-  `id` int(11) NOT NULL,
-  `title` varchar(50) DEFAULT NULL,
-  `img_t` varchar(50) DEFAULT NULL,
-  `create_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -306,30 +257,11 @@ ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `display`
---
-ALTER TABLE `display`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Chỉ mục cho bảng `feedback`
 --
 ALTER TABLE `feedback`
   ADD PRIMARY KEY (`id`),
   ADD KEY `User_id` (`User_id`);
-
---
--- Chỉ mục cho bảng `galery`
---
-ALTER TABLE `galery`
-  ADD PRIMARY KEY (`Galery_id`),
-  ADD KEY `product_id2` (`product_id2`);
-
---
--- Chỉ mục cho bảng `name_shop`
---
-ALTER TABLE `name_shop`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Chỉ mục cho bảng `orders`
@@ -376,28 +308,10 @@ ALTER TABLE `contact`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT cho bảng `display`
---
-ALTER TABLE `display`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT cho bảng `feedback`
 --
 ALTER TABLE `feedback`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `galery`
---
-ALTER TABLE `galery`
-  MODIFY `Galery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT cho bảng `name_shop`
---
-ALTER TABLE `name_shop`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `orders`
@@ -432,12 +346,6 @@ ALTER TABLE `user`
 --
 ALTER TABLE `feedback`
   ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`User_id`) REFERENCES `user` (`User_id`);
-
---
--- Các ràng buộc cho bảng `galery`
---
-ALTER TABLE `galery`
-  ADD CONSTRAINT `galery_ibfk_1` FOREIGN KEY (`product_id2`) REFERENCES `products` (`product_id`);
 
 --
 -- Các ràng buộc cho bảng `orders`
